@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Eyevinn HTML Player</title>
+    <meta name="description" content="HTML Player for HLS and MPEG-DASH"/>
+    <link rel="stylesheet" href="../build/eyevinn-html-player.css" />
+    <style>
+      .wrapper {
+        width: 1024px;
+        height: 576px;
+        margin: 0 auto;
+        background-color: black;
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+      .demo h1 {
+        text-align: center;
+        font-family: Arial, Verdana;
+        font-size: 34pt;
+      }
+      .demo h2 {
+        text-align: center;
+        font-family: Arial, Verdana;
+        font-size: 24pt;        
+      }
+    </style>
+  </head>
+  <body class="demo">
+    <h1>Eyevinn HTML Player Demo</h1>
+    <h2>HLS</h2>
+    <div class="wrapper" id="hls-wrapper"></div>
+    <h2>MPEG-DASH</h2>
+    <div class="wrapper" id="dash-wrapper"></div>
+    <script src="../build/eyevinn-html-player.js" type="text/javascript"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function(event) {
+        setupEyevinnPlayer('hls-wrapper', 
+        'https://maitv-vod.lab.eyevinn.technology/VINN.mp4/master.m3u8').then(function(player) {
+          console.log('HLS Player initiated');    
+          player.play(true);
+        }).catch(console.error);
+        setupEyevinnPlayer('dash-wrapper', 
+        'https://storage.googleapis.com/shaka-demo-assets/sintel-mp4-only/dash.mpd').then(function(player) {
+          console.log('Dash Player initiated');    
+          player.play(true);
+        }).catch(console.error);
+      });
+    </script>
+  </body>
+</html>
