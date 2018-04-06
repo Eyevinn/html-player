@@ -1,4 +1,5 @@
 const PlayerTechFactory = require('./player_tech_factory.js');
+const PlayerSkin = require('./player_skin.js');
 
 class Player {
   constructor(wrapperId, manifestUrl) {
@@ -10,7 +11,10 @@ class Player {
   init() {
     return new Promise((resolve, reject) => {
       this.playerTechFactory_.constructPlayerTech().then(player => {
-        resolve(player);
+        let skin = new PlayerSkin(player);
+        skin.init().then(() => {
+          resolve(player);
+        });
       });
     });  
   }

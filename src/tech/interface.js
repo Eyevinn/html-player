@@ -2,7 +2,24 @@ class PlayerTechInterface {
   constructor(wrapperId, manifestUrl) {
     this.manifestUrl_ = manifestUrl;
     this.videoElement_ = null;
-    this.init_(wrapperId);
+    this.wrapperElement_ = this.init_(wrapperId);
+
+    this.eventListeners_ = {
+      'playing': [],
+      'paused': [],
+    };
+  }
+
+  get wrapper() {
+    return this.wrapperElement_;
+  }
+
+  get isPlaying() {
+    return !this.videoElement_.paused;
+  }
+
+  on(event, func) {
+    this.eventListeners_[event].push(func);
   }
 
   play(startMuted) {
@@ -28,6 +45,19 @@ class PlayerTechInterface {
     this.videoElement_.style = 'width: 100%';
     let wrapperElement = document.getElementById(wrapperId);
     wrapperElement.appendChild(this.videoElement_);
+
+    this.videoElement_.addEventListener('playing', event => {
+      for(let f of this.eventListeners_['playing']) {
+        f();
+      }
+    });
+
+    this.videoElement_.addEventListener('pause', event => {
+      for(let f of this.eventListeners_['paused']) {
+        f();
+      }
+    });
+    return wrapperElement;
   }  
 }
 
