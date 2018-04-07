@@ -56,7 +56,6 @@ class PlayerTechInterface {
   init_(wrapperId) {
     this.videoElement_ = document.createElement('video');
     this.videoElement_.className = 'eyevinn-player';
-    this.videoElement_.style = 'width: 100%';
     let wrapperElement = document.getElementById(wrapperId);
     wrapperElement.appendChild(this.videoElement_);
 

@@ -33,15 +33,20 @@ class PlayerTechFactory {
         player.load().then(() => {
           resolve(player)
         }).catch(reject);
-      });
+      }).catch(reject);
     });
   }
 
   determineType_(uri) {
     return new Promise((resolve, reject) => {
       request(uri, (err, resp, body) => {
-        if (resp.statusCode !== 200) {
-          reject('Stream not found');
+        if (err || resp.statusCode !== 200) {
+          if (resp.statusCode === 404) {
+            reject('Stream not found');
+          } else {
+            console.error(err);
+            reject(err);
+          }
         } else {
           let type = CONTENT_TYPE_MAP[resp.headers['content-type']];
           if (!type) {

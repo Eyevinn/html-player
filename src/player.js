@@ -14,8 +14,8 @@ class Player {
         let skin = new PlayerSkin(player);
         skin.init().then(() => {
           resolve(player);
-        });
-      });
+        }).catch(reject);
+      }).catch(reject);
     });  
   }
 
