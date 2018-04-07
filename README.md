@@ -2,7 +2,7 @@
 
 Eyevinn HTML Player is a simplistic video player for playback of ABR streams. It is free-to-use and currently supports the ABR streaming formats Apple HLS and MPEG-DASH.
 
-Demo implementation available here: https://player.eyevinn.technology/v0.1.2/demo/index.html
+Demo implementation available here: https://player.eyevinn.technology/v0.1.3/demo/index.html
 
 ![screenshot](https://player.eyevinn.technology/screenshot.png)
 
