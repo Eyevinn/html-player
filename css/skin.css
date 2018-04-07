@@ -25,14 +25,14 @@
 }
 
 .player-btn-play {
-  background: url('svg/media-play.svg') no-repeat;
-  background-size: 100% 100%;
+  background: url('svg/media-play.svg') center no-repeat;
+  background-size: 75% 75%;
   background-color: white;
 }
 
 .player-btn-pause {
-  background: url('svg/media-pause.svg') no-repeat;
-  background-size: 100% 100%;
+  background: url('svg/media-pause.svg') center no-repeat;
+  background-size: 75% 75%;
   background-color: white;
 }
 
@@ -47,14 +47,14 @@
 }
 
 .player-btn-audio-on {
-  background: url('svg/volume-high.svg') no-repeat;
-  background-size: 100% 100%;
+  background: url('svg/volume-high.svg') center no-repeat;
+  background-size: 70% 70%;
   background-color: white;
 }
 
 .player-btn-audio-off {
-  background: url('svg/volume-off.svg') no-repeat;
-  background-size: 100% 100%;
+  background: url('svg/volume-off.svg') center no-repeat;
+  background-size: 70% 70%;
   background-color: white;  
 }
 
