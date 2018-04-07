@@ -36,6 +36,28 @@
   background-color: white;
 }
 
+.player-btn-toggle-audio {
+  position: absolute;
+  height: 50%;
+  width: 5%;
+  top: 20%;
+  left: 92%;
+  border-radius: 7pt;
+  padding: 2px;
+}
+
+.player-btn-audio-on {
+  background: url('svg/volume-high.svg') no-repeat;
+  background-size: 100% 100%;
+  background-color: white;
+}
+
+.player-btn-audio-off {
+  background: url('svg/volume-off.svg') no-repeat;
+  background-size: 100% 100%;
+  background-color: white;  
+}
+
 .player-btn-hover {
   background-color: rgb(15,186,240);
 }

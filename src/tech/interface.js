@@ -7,6 +7,8 @@ class PlayerTechInterface {
     this.eventListeners_ = {
       'playing': [],
       'paused': [],
+      'muted': [],
+      'unmuted': [],
     };
   }
 
@@ -16,6 +18,10 @@ class PlayerTechInterface {
 
   get isPlaying() {
     return !this.videoElement_.paused;
+  }
+
+  get isMuted() {
+    return this.videoElement_.muted;
   }
 
   on(event, func) {
@@ -31,6 +37,14 @@ class PlayerTechInterface {
 
   pause() {
     this.videoElement_.pause();
+  }
+
+  mute() {
+    this.videoElement_.muted = true;
+  }
+
+  unmute() {
+    this.videoElement_.muted = false;
   }
 
   load() {
@@ -54,6 +68,13 @@ class PlayerTechInterface {
 
     this.videoElement_.addEventListener('pause', event => {
       for(let f of this.eventListeners_['paused']) {
+        f();
+      }
+    });
+
+    this.videoElement_.addEventListener('volumechange', event => {
+      let evname = this.videoElement_.muted ? 'muted' : 'unmuted';
+      for(let f of this.eventListeners_[evname]) {
         f();
       }
     });

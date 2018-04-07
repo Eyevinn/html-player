@@ -18,8 +18,6 @@ class PlayerSkin {
     controllerElement.appendChild(logoElement);
     let btnTogglePlay = document.createElement('div');
     btnTogglePlay.className = 'player-btn-toggle-play';
-    controllerElement.appendChild(btnTogglePlay);
-
     btnTogglePlay.addEventListener('mouseover', event => {
       event.target.className += ' player-btn-hover';
     });
@@ -33,12 +31,36 @@ class PlayerSkin {
         this.playerInterface_.pause();        
       }
     });
+    controllerElement.appendChild(btnTogglePlay);
+
+    let btnToggleAudio = document.createElement('div');
+    btnToggleAudio.className = 'player-btn-toggle-audio';
+    btnToggleAudio.addEventListener('mouseover', event => {
+      event.target.className += ' player-btn-hover';
+    });
+    btnToggleAudio.addEventListener('mouseout', event => {
+      event.target.className = event.target.className.replace('player-btn-hover', '');
+    });
+    btnToggleAudio.addEventListener('click', event => {
+      if (!this.playerInterface_.isMuted) {
+        this.playerInterface_.mute();
+      } else {
+        this.playerInterface_.unmute();        
+      }
+    });
+    controllerElement.appendChild(btnToggleAudio);
 
     this.playerInterface_.on('playing', () => {
       btnTogglePlay.className = 'player-btn-toggle-play player-btn-pause';
     });
     this.playerInterface_.on('paused', () => {
       btnTogglePlay.className = 'player-btn-toggle-play player-btn-play';
+    });
+    this.playerInterface_.on('muted', () => {
+      btnToggleAudio.className = 'player-btn-toggle-audio player-btn-audio-off';
+    });
+    this.playerInterface_.on('unmuted', () => {
+      btnToggleAudio.className = 'player-btn-toggle-audio player-btn-audio-on';
     });
 
     wrapperElement.appendChild(controllerElement);
