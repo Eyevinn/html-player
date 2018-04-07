@@ -4,6 +4,8 @@ Eyevinn HTML Player is a simplistic video player for playback of ABR streams. It
 
 Demo implementation available here: https://player.eyevinn.technology/v0.1.2/demo/index.html
 
+![screenshot](https://player.eyevinn.technology/screenshot.png)
+
 The player is built on Hls.js and Shaka Player
 
 ## Usage
