@@ -62,14 +62,6 @@
   background-color: rgb(15,186,240);
 }
 
-.player-btn-hidden {
-  display: none;
-}
-
-.player-btn-visible {
-  display: block;
-}
-
 .player-logo {
   position: absolute;
   background: url('svg/eyevinnlogo.png') no-repeat;

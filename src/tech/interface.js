@@ -31,6 +31,12 @@ class PlayerTechInterface {
   play(startMuted) {
     if (startMuted) {
       this.videoElement_.muted = true;
+    } else {
+      this.videoElement_.muted = false;
+    }
+    let evname = this.videoElement_.muted ? 'muted' : 'unmuted';
+    for(let f of this.eventListeners_[evname]) {
+      f();
     }
     this.videoElement_.play();
   }
