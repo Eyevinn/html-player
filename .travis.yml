@@ -1,0 +1,15 @@
+sudo: required
+dist: trusty
+language: node_js
+node_js:
+  - '6'
+deploy:
+  on:
+    tags: true
+  provider: s3
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  bucket: origin-player-releases
+  region: eu-west-1
+  upload_dir: $TRAVIS_TAG
+  skip_cleanup: true

@@ -9,7 +9,8 @@
     "build-css": "cat css/*.css > ./build/eyevinn-html-player.css",
     "build-icons": "rm -rf ./build/svg && mkdir ./build/svg && cp icons/* build/svg",
     "build": "npm run build-css && npm run build-icons && $(npm bin)/browserify -t [ babelify --presets [ es2015 ] ] index.js > ./build/eyevinn-html-player.js",
-    "start": "python -m SimpleHTTPServer 3000"
+    "start": "python -m SimpleHTTPServer 3000",
+    "postversion": "git push && git push --tags"
   },
   "author": "Jonas Birmé <jonas.birme@eyevinn.se>",
   "license": "Apache-2.0",
