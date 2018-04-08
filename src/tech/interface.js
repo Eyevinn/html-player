@@ -1,3 +1,5 @@
+const VERSION = require('../../package.json').version;
+
 class PlayerTechInterface {
   constructor(wrapperId, manifestUrl) {
     this.manifestUrl_ = manifestUrl;
@@ -10,6 +12,10 @@ class PlayerTechInterface {
       'muted': [],
       'unmuted': [],
     };
+  }
+
+  get version() {
+    return VERSION;
   }
 
   get wrapper() {

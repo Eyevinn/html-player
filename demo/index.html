@@ -36,12 +36,12 @@
       document.addEventListener('DOMContentLoaded', function(event) {
         setupEyevinnPlayer('hls-wrapper', 
         'https://maitv-vod.lab.eyevinn.technology/VINN.mp4/master.m3u8').then(function(player) {
-          console.log('HLS Player initiated');    
+          console.log('HLS Player initiated: ' + player.version);
           player.play(false);
         }).catch(console.error);
         setupEyevinnPlayer('dash-wrapper', 
         'https://storage.googleapis.com/shaka-demo-assets/sintel-mp4-only/dash.mpd').then(function(player) {
-          console.log('Dash Player initiated');    
+          console.log('Dash Player initiated: ' + player.version);    
           player.play(true);
         }).catch(console.error);
       });
