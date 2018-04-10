@@ -15,6 +15,7 @@
   "author": "Jonas Birmé <jonas.birme@eyevinn.se>",
   "license": "Apache-2.0",
   "dependencies": {
+    "dashjs": "^2.6.7",
     "hls.js": "^0.9.1",
     "request": "^2.85.0",
     "shaka-player": "^2.3.5"
