@@ -14,11 +14,11 @@ The snippet below shows an example on how to implement the player:
 
 ```
   <head>
-    <link rel="stylesheet" href="https://player.eyevinn.technology/v0.1.4/build/eyevinn-html-player.css"></link>
+    <link rel="stylesheet" href="https://player.eyevinn.technology/v0.2.0/build/eyevinn-html-player.css"></link>
   </head>
   <body>
     <div id="player-wrapper"></div>
-    <script src="https://player.eyevinn.technology/v0.1.4/build/eyevinn-html-player.js" type="text/javascript"></script>
+    <script src="https://player.eyevinn.technology/v0.2.0/build/eyevinn-html-player.js" type="text/javascript"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function(event) {
         setupEyevinnPlayer('player-wrapper', 'https://maitv-vod.lab.eyevinn.technology/VINN.mp4/master.m3u8').then(function(player) {
