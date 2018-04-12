@@ -97,7 +97,7 @@ class PlayerSkin {
       let w = timelineElement.clientWidth;
       let pos = this.playerInterface_.position;
       positionElement.innerHTML = this.formatPlayerTime_(pos);
-      let progress = (pos / w) * 100; // percentage
+      let progress = (pos / this.playerInterface_.duration) * 100; // percentage
       timelineElement.setAttribute('style', `background: linear-gradient(90deg, #0FBAF0 ${progress}%, #000000 ${progress}%)`);
     }, 1000);
 

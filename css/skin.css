@@ -25,7 +25,7 @@
 .player-timeline {
   border: solid 1px white;
   width: 85%;
-  height: 2px;
+  height: 4px;
   margin: 0 auto;
 }
 
@@ -39,7 +39,7 @@
   font-size: 0.8em;
   color: white;
   float: left;
-  transform: translateY(-6px);
+  transform: translateY(-2px);
 }
 
 .player-timeline-duration {
