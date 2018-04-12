@@ -20,7 +20,12 @@ class MssPlayer extends PlayerTechInterface {
       mediaPlayer.on(DashJs.MediaPlayer.events.ERROR, ev => {
         reject(`Failed to load Mss Player: ${ev.event.message}`);
       });
+      this.mediaPlayer_ = mediaPlayer;
     });
+  }
+
+  get isLive() {
+    return this.mediaPlayer_.isDynamic();
   }
 }
 

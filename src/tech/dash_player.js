@@ -12,7 +12,12 @@ class DashPlayer extends PlayerTechInterface {
       shakap.load(this.manifestUrl_).then(() => {
         resolve();
       });
+      this.shakap_ = shakap;
     });
+  }
+
+  get isLive() {
+    return this.shakap_.isLive();
   }
 }
 

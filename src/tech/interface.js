@@ -30,6 +30,10 @@ class PlayerTechInterface {
     return this.videoElement_.muted;
   }
 
+  get isLive() {
+    throw new Error('Missing implementation of isLive() property');
+  }
+
   on(event, func) {
     this.eventListeners_[event].push(func);
   }

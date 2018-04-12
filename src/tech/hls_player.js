@@ -16,13 +16,26 @@ class HlsPlayer extends PlayerTechInterface {
           hls.loadSource(this.manifestUrl_);
         });
         hls.on(HlsJs.Events.MANIFEST_PARSED, (event, data) => {
+          //resolve();
+        });
+        hls.on(HlsJs.Events.LEVEL_LOADED, (event, data) => {
+          this.isLive_ = data.details.live;
           resolve();
         });
+        this.hls_ = hls;
       } else if (this.videoElement_.canPlayType('application/vnd.apple.mpegurl')) {
         this.videoElement_.src = this.manifestUrl_;
         resolve();
       }
     });
+  }
+
+  get isLive() {
+    if (this.hls_) {
+      return this.isLive_;
+    } else {
+      return (this.videoElement_.duration === NaN);
+    }
   }
 }
 
