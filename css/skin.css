@@ -14,6 +14,42 @@
   opacity: 0; visibility:hidden;
 }
 
+.player-timeline-container {
+  position: absolute;
+  left: 30%;
+  width: 50%;
+  height: 10%;
+  top: 45%;
+}
+
+.player-timeline {
+  border: solid 1px white;
+  width: 85%;
+  height: 2px;
+  margin: 0 auto;
+}
+
+.player-timeline-mark {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.player-timeline-position {
+  font-family: LevelOne;
+  font-size: 0.8em;
+  color: white;
+  float: left;
+  transform: translateY(-6px);
+}
+
+.player-timeline-duration {
+  font-family: LevelOne;
+  font-size: 0.8em;
+  color: white;
+  float: right;
+  transform: translateY(-8px);
+}
+
 .player-btn-toggle-play {
   position: absolute;
   height: 50%;

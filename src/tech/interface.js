@@ -31,7 +31,21 @@ class PlayerTechInterface {
   }
 
   get isLive() {
-    throw new Error('Missing implementation of isLive() property');
+    throw new Error('Missing implementation of isLive() property in player tech.');
+  }
+
+  get duration() {
+    if (!this.isLive) {
+      return this.videoElement_.duration;
+    }
+    return NaN;
+  }
+
+  get position() {
+    if (!this.isLive) {
+      return this.videoElement_.currentTime;
+    }
+    return NaN;
   }
 
   on(event, func) {
