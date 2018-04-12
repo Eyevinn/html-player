@@ -17,7 +17,7 @@ class PlayerSkin {
     logoElement.className = 'player-logo';
     controllerElement.appendChild(logoElement);
     let btnTogglePlay = document.createElement('div');
-    btnTogglePlay.className = 'player-btn-toggle-play';
+    btnTogglePlay.className = 'player-btn-toggle-play player-btn-play';
     btnTogglePlay.addEventListener('mouseover', event => {
       event.target.className += ' player-btn-hover';
     });
@@ -34,7 +34,7 @@ class PlayerSkin {
     controllerElement.appendChild(btnTogglePlay);
 
     let btnToggleAudio = document.createElement('div');
-    btnToggleAudio.className = 'player-btn-toggle-audio';
+    btnToggleAudio.className = 'player-btn-toggle-audio player-btn-audio-on';
     btnToggleAudio.addEventListener('mouseover', event => {
       event.target.className += ' player-btn-hover';
     });
