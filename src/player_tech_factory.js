@@ -60,10 +60,15 @@ class PlayerTechFactory {
             reject(`Unsupported content '${resp.headers['content-type']}'`);
           } else {
             if (type === ENUM_TYPE_NO_CONTENT_TYPE) {
+                // Match on URL as a fallback
               if (uri.match(/\.m3u8/)) {
                 type = ENUM_TYPE_HLS;
               } else if (uri.match(/\.mpd/)) {
                 type = ENUM_TYPE_MPEGDASH;
+              } else if (uri.match(/\/Manifest/)) {
+                type = ENUM_TYPE_MSS;
+              } else if (uri.match(/\/manifest/)) {
+                type = ENUM_TYPE_MSS;
               }
             }
             resolve(type);
