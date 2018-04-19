@@ -29,6 +29,10 @@
   margin: 0 auto;
 }
 
+.player-timeline:hover {
+  cursor: pointer;
+}
+
 .player-timeline-mark {
   width: 85%;
   margin: 0 auto;

@@ -48,6 +48,12 @@ class PlayerTechInterface {
     return NaN;
   }
 
+  set position(newpos) {
+    if (!this.isLive) {
+      this.videoElement_.currentTime = newpos;
+    }
+  }
+
   on(event, func) {
     this.eventListeners_[event].push(func);
   }

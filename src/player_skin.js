@@ -101,6 +101,13 @@ class PlayerSkin {
       timelineElement.setAttribute('style', `background: linear-gradient(90deg, #0FBAF0 ${progress}%, #000000 ${progress}%)`);
     }, 1000);
 
+    timelineElement.addEventListener('click', ev => {
+      let w = ev.target.clientWidth;
+      let position = (ev.offsetX / w) * this.playerInterface_.duration;
+      //console.log(`${(ev.offsetX / w) * 100}% position=${position}`);
+      this.playerInterface_.position = position;
+    });
+
     return timelineContainer;
   }
 
