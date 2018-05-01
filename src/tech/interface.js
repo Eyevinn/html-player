@@ -58,6 +58,10 @@ class PlayerTechInterface {
     this.eventListeners_[event].push(func);
   }
 
+  attachControllerSkin(skin) {
+    this.controllerSkin_ = skin;
+  }
+
   play(startMuted) {
     if (startMuted) {
       this.videoElement_.muted = true;
@@ -68,7 +72,16 @@ class PlayerTechInterface {
     for(let f of this.eventListeners_[evname]) {
       f();
     }
-    this.videoElement_.play();
+    let playPromise = this.videoElement_.play();
+
+    if (playPromise !== undefined) {
+      playPromise.catch(error => {
+        console.log('Auto-play was prevented, show big play button');
+        this.controllerSkin_.showBigPlayButton();
+      }).then(() => {
+
+      });
+    }
   }
 
   pause() {
@@ -96,6 +109,8 @@ class PlayerTechInterface {
     wrapperElement.appendChild(this.videoElement_);
     let ar = this.videoElement_.clientWidth / this.videoElement_.clientHeight;
     this.videoElement_.parentElement.style.setProperty('height', `${this.videoElement_.clientWidth / ar}px`);
+
+    wrapperElement.style.setProperty('position', 'relative');
 
     this.videoElement_.addEventListener('playing', event => {
       for(let f of this.eventListeners_['playing']) {

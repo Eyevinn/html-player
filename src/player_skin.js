@@ -10,6 +10,10 @@ class PlayerSkin {
     });
   }
 
+  showBigPlayButton() {
+    this.bigPlayButton_.className = 'player-btn-big player-btn-big-visible';
+  }
+
   setupControllers_(wrapperElement) {
     let controllerElement = document.createElement('div');
     controllerElement.className = 'player-controller player-controller-hidden';
@@ -36,6 +40,14 @@ class PlayerSkin {
       }
     });
     controllerElement.appendChild(btnTogglePlay);
+    
+    let bigPlayButton = document.createElement('div');
+    bigPlayButton.className = 'player-btn-big player-btn-big-hidden';
+    wrapperElement.appendChild(bigPlayButton);
+    this.bigPlayButton_ = bigPlayButton;
+    this.bigPlayButton_.addEventListener('click', event => {
+      this.playerInterface_.play();
+    });
 
     let btnToggleAudio = document.createElement('div');
     btnToggleAudio.className = 'player-btn-toggle-audio player-btn-audio-on';
@@ -56,6 +68,7 @@ class PlayerSkin {
 
     this.playerInterface_.on('playing', () => {
       btnTogglePlay.className = 'player-btn-toggle-play player-btn-pause';
+      this.bigPlayButton_.className = 'player-btn-big player-btn-big-hidden';
     });
     this.playerInterface_.on('paused', () => {
       btnTogglePlay.className = 'player-btn-toggle-play player-btn-play';

@@ -13,6 +13,7 @@ class Player {
       this.playerTechFactory_.constructPlayerTech().then(player => {
         let skin = new PlayerSkin(player);
         skin.init().then(() => {
+          player.attachControllerSkin(skin);
           resolve(player);
         }).catch(reject);
       }).catch(reject);

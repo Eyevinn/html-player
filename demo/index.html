@@ -39,7 +39,7 @@
         setupEyevinnPlayer('hls-wrapper', 
         'https://maitv-vod.lab.eyevinn.technology/VINN.mp4/master.m3u8').then(function(player) {
           console.log('HLS Player initiated: ' + player.version);
-          //player.play(false);
+          player.play(false);
           console.log('HLS: isLive=' + player.isLive);
         }).catch(console.error);
         setupEyevinnPlayer('dash-wrapper', 
