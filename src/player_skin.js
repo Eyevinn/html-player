@@ -13,6 +13,10 @@ class PlayerSkin {
   setupControllers_(wrapperElement) {
     let controllerElement = document.createElement('div');
     controllerElement.className = 'player-controller player-controller-hidden';
+    let h = wrapperElement.clientHeight * 0.15;
+    controllerElement.style.setProperty('height', `${h}px`);
+    controllerElement.style.setProperty('transform', `translateY(-${h}px)`);
+    
     let logoElement = document.createElement('div');
     logoElement.className = 'player-logo';
     controllerElement.appendChild(logoElement);
@@ -75,6 +79,12 @@ class PlayerSkin {
       this.controllerTimer = setTimeout(() => {
         controllerElement.className = 'player-controller player-controller-hidden';
       }, 5000);
+    });
+
+    window.addEventListener('resize', () => {
+      let h = wrapperElement.clientHeight * 0.15;
+      controllerElement.style.setProperty('height', `${h}px`);
+      controllerElement.style.setProperty('transform', `translateY(-${h}px)`);
     });
   }
 

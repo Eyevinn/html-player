@@ -94,6 +94,8 @@ class PlayerTechInterface {
     this.videoElement_.className = 'eyevinn-player';
     let wrapperElement = document.getElementById(wrapperId);
     wrapperElement.appendChild(this.videoElement_);
+    let ar = this.videoElement_.clientWidth / this.videoElement_.clientHeight;
+    this.videoElement_.parentElement.style.setProperty('height', `${this.videoElement_.clientWidth / ar}px`);
 
     this.videoElement_.addEventListener('playing', event => {
       for(let f of this.eventListeners_['playing']) {
@@ -112,6 +114,11 @@ class PlayerTechInterface {
       for(let f of this.eventListeners_[evname]) {
         f();
       }
+    });
+
+    window.addEventListener('resize', () => {
+      let ar = this.videoElement_.clientWidth / this.videoElement_.clientHeight;
+      this.videoElement_.parentElement.style.setProperty('height', `${this.videoElement_.clientWidth / ar}px`);
     });
     return wrapperElement;
   }  
