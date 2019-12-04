@@ -1,4 +1,3 @@
-const request = require("request");
 import { HlsPlayer } from "./playerTechs/hls_player";
 import { DashPlayer } from "./playerTechs/dash_player";
 import { MssPlayer } from "./playerTechs/mss_player";
@@ -51,34 +50,23 @@ export class PlayerTechFactory {
 
   determineType_(uri) {
     return new Promise((resolve, reject) => {
-      request(uri, (err, resp) => {
-        if (err || resp.statusCode !== 200) {
-          if (resp.statusCode === 404) {
-            reject("Stream not found");
-          } else {
-            console.error(err);
-            reject(err);
-          }
-        } else {
-          let type = CONTENT_TYPE_MAP[resp.headers["content-type"]];
-          if (!type) {
-            reject(`Unsupported content '${resp.headers["content-type"]}'`);
-          } else {
-            if (type === ENUM_TYPE_NO_CONTENT_TYPE) {
-              // Match on URL as a fallback
-              if (uri.match(/\.m3u8/)) {
-                type = ENUM_TYPE_HLS;
-              } else if (uri.match(/\.mpd/)) {
-                type = ENUM_TYPE_MPEGDASH;
-              } else if (uri.match(/\/Manifest/)) {
-                type = ENUM_TYPE_MSS;
-              } else if (uri.match(/\/manifest/)) {
-                type = ENUM_TYPE_MSS;
-              }
-            }
-            resolve(type);
+      fetch(uri).then(resp => {
+        let type = CONTENT_TYPE_MAP[resp.headers["content-type"]];
+        if (!type) {
+          if (uri.match(/\.m3u8/)) {
+            type = ENUM_TYPE_HLS;
+          } else if (uri.match(/\.mpd/)) {
+            type = ENUM_TYPE_MPEGDASH;
+          } else if (uri.match(/\/Manifest/)) {
+            type = ENUM_TYPE_MSS;
+          } else if (uri.match(/\/manifest/)) {
+            type = ENUM_TYPE_MSS;
           }
         }
+        resolve(type);
+      }).catch(err => {
+        console.error(err);
+        reject(err);
       });
     });
   }
