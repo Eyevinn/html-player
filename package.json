@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "$(npm bin)/jasmine",
-    "build": "parcel build index.js --no-source-maps",
+    "build": "parcel build index.js --no-source-maps --out-dir build --out-file eyevinn-html-player.js",
     "start": "parcel ./demo/index.html",
     "postversion": "git push && git push --tags"
   },
