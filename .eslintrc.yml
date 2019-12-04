@@ -1,0 +1,27 @@
+env:
+  browser: true
+  es6: true
+  jest/globals: true
+
+extends:
+  - eslint-config-prettier
+  - eslint:recommended
+
+plugins:
+  - prettier
+  - jest
+
+globals:
+  Promise: true
+
+rules:
+  prettier/prettier:
+    - error
+  arrow-body-style: off
+  no-console: off
+
+
+parser: babel-eslint
+
+parserOptions:
+  sourceType: module

@@ -1,16 +1,16 @@
-const VERSION = require('../../package.json').version;
+const VERSION = require("../../package.json").version;
 
-class PlayerTechInterface {
+export class PlayerTechInterface {
   constructor(wrapperId, manifestUrl) {
     this.manifestUrl_ = manifestUrl;
     this.videoElement_ = null;
     this.wrapperElement_ = this.init_(wrapperId);
 
     this.eventListeners_ = {
-      'playing': [],
-      'paused': [],
-      'muted': [],
-      'unmuted': [],
+      playing: [],
+      paused: [],
+      muted: [],
+      unmuted: []
     };
   }
 
@@ -31,7 +31,9 @@ class PlayerTechInterface {
   }
 
   get isLive() {
-    throw new Error('Missing implementation of isLive() property in player tech.');
+    throw new Error(
+      "Missing implementation of isLive() property in player tech."
+    );
   }
 
   get duration() {
@@ -68,19 +70,19 @@ class PlayerTechInterface {
     } else {
       this.videoElement_.muted = false;
     }
-    let evname = this.videoElement_.muted ? 'muted' : 'unmuted';
-    for(let f of this.eventListeners_[evname]) {
+    let evname = this.videoElement_.muted ? "muted" : "unmuted";
+    for (let f of this.eventListeners_[evname]) {
       f();
     }
     let playPromise = this.videoElement_.play();
 
     if (playPromise !== undefined) {
-      playPromise.catch(error => {
-        console.log('Auto-play was prevented, show big play button');
-        this.controllerSkin_.showBigPlayButton();
-      }).then(() => {
-
-      });
+      playPromise
+        .catch(() => {
+          console.log("Auto-play was prevented, show big play button");
+          this.controllerSkin_.showBigPlayButton();
+        })
+        .then(() => {});
     }
   }
 
@@ -98,45 +100,49 @@ class PlayerTechInterface {
 
   load() {
     return new Promise((resolve, reject) => {
-      reject('Missing implementation of load() in player tech.');
+      reject("Missing implementation of load() in player tech.");
     });
   }
 
   init_(wrapperId) {
-    this.videoElement_ = document.createElement('video');
-    this.videoElement_.className = 'eyevinn-player';
+    this.videoElement_ = document.createElement("video");
+    this.videoElement_.className = "eyevinn-player";
     let wrapperElement = document.getElementById(wrapperId);
     wrapperElement.appendChild(this.videoElement_);
     let ar = this.videoElement_.clientWidth / this.videoElement_.clientHeight;
-    this.videoElement_.parentElement.style.setProperty('height', `${this.videoElement_.clientWidth / ar}px`);
+    this.videoElement_.parentElement.style.setProperty(
+      "height",
+      `${this.videoElement_.clientWidth / ar}px`
+    );
 
-    wrapperElement.style.setProperty('position', 'relative');
+    wrapperElement.style.setProperty("position", "relative");
 
-    this.videoElement_.addEventListener('playing', event => {
-      for(let f of this.eventListeners_['playing']) {
+    this.videoElement_.addEventListener("playing", () => {
+      for (let f of this.eventListeners_["playing"]) {
         f();
       }
     });
 
-    this.videoElement_.addEventListener('pause', event => {
-      for(let f of this.eventListeners_['paused']) {
+    this.videoElement_.addEventListener("pause", () => {
+      for (let f of this.eventListeners_["paused"]) {
         f();
       }
     });
 
-    this.videoElement_.addEventListener('volumechange', event => {
-      let evname = this.videoElement_.muted ? 'muted' : 'unmuted';
-      for(let f of this.eventListeners_[evname]) {
+    this.videoElement_.addEventListener("volumechange", () => {
+      let evname = this.videoElement_.muted ? "muted" : "unmuted";
+      for (let f of this.eventListeners_[evname]) {
         f();
       }
     });
 
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
       let ar = this.videoElement_.clientWidth / this.videoElement_.clientHeight;
-      this.videoElement_.parentElement.style.setProperty('height', `${this.videoElement_.clientWidth / ar}px`);
+      this.videoElement_.parentElement.style.setProperty(
+        "height",
+        `${this.videoElement_.clientWidth / ar}px`
+      );
     });
     return wrapperElement;
-  }  
+  }
 }
-
-module.exports = PlayerTechInterface;

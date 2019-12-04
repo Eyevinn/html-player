@@ -5,26 +5,33 @@
   "main": "index.js",
   "scripts": {
     "test": "$(npm bin)/jasmine",
-    "prebuild": "if [ -d ./build ] ; then rm -rf ./build ; fi && mkdir ./build",
-    "build-css": "cat css/*.css > ./build/eyevinn-html-player.css",
-    "build-icons": "rm -rf ./build/svg && mkdir ./build/svg && cp icons/* build/svg",
-    "build": "npm run build-css && npm run build-icons && $(npm bin)/browserify -t [ babelify --presets [ es2015 ] ] index.js > ./build/eyevinn-html-player.js",
-    "start": "python -m SimpleHTTPServer 3000",
+    "build": "parcel build index.js --no-source-maps",
+    "start": "parcel ./demo/index.html",
     "postversion": "git push && git push --tags"
   },
   "author": "Jonas Birmé <jonas.birme@eyevinn.se>",
   "license": "Apache-2.0",
   "dependencies": {
-    "dashjs": "^2.6.7",
-    "hls.js": "^0.9.1",
-    "request": "^2.85.0",
-    "shaka-player": "^2.3.5"
+    "dashjs": "^3.0.0",
+    "hls.js": "^0.12.4",
+    "request": "^2.88.0",
+    "shaka-player": "^2.5.6"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babelify": "^8.0.0",
-    "browserify": "^16.1.1",
-    "jasmine": "^3.1.0"
+    "@babel/cli": "^7.7.4",
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@types/jest": "^24.0.23",
+    "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.6",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-jest": "^23.1.1",
+    "eslint-plugin-prettier": "^3.1.1",
+    "jest": "^24.9.0",
+    "parcel-bundler": "^1.12.4",
+    "prettier": "^1.19.1",
+    "sass": "^1.23.7"
   }
 }
