@@ -1,21 +1,7 @@
 import { HlsPlayer } from "./playerTechs/hls_player";
 import { DashPlayer } from "./playerTechs/dash_player";
 import { MssPlayer } from "./playerTechs/mss_player";
-
-const ENUM_TYPE_HLS = "HLS";
-const ENUM_TYPE_MPEGDASH = "MPD";
-const ENUM_TYPE_MSS = "MSS";
-const ENUM_TYPE_NO_CONTENT_TYPE = "BAD_CONTENT_TYPE";
-
-const CONTENT_TYPE_MAP = {
-  "application/x-mpegURL": ENUM_TYPE_HLS,
-  "application/octet-stream": ENUM_TYPE_NO_CONTENT_TYPE,
-  "binary/octet-stream": ENUM_TYPE_NO_CONTENT_TYPE,
-  "application/vnd.apple.mpegurl": ENUM_TYPE_HLS,
-  "application/dash+xml": ENUM_TYPE_MPEGDASH,
-  "application/vnd.apple.mpegurl;charset=UTF-8": ENUM_TYPE_HLS,
-  "application/vnd.ms-sstr+xml": ENUM_TYPE_MSS
-};
+import { CONTENT_TYPE_MAP, ENUM_TYPE_HLS, ENUM_TYPE_MPEGDASH, ENUM_TYPE_MSS } from "./utils/constants";
 
 export class PlayerTechFactory {
   constructor(wrapperId, manifestUrl) {
