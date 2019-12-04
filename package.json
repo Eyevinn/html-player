@@ -4,7 +4,6 @@
   "description": "Eyevinn HTML5 Player with support for HLS, MPEG-DASH and MSS",
   "main": "index.js",
   "scripts": {
-    "test": "$(npm bin)/jasmine",
     "build-js": "parcel build index.js --no-source-maps --out-dir build --out-file eyevinn-html-player.js",
     "build-css": "parcel build styles/main.scss --no-source-maps --out-dir build --out-file eyevinn-html-player.css",
     "build": "npm run build-js && npm run build-css",
@@ -12,6 +11,9 @@
     "postversion": "git push && git push --tags"
   },
   "author": "Jonas Birmé <jonas.birme@eyevinn.se>",
+  "contributors": [
+    "Erik Hoffman <erik.hoffman@eyevinn.se>"
+  ],
   "license": "Apache-2.0",
   "dependencies": {
     "dashjs": "^3.0.0",
