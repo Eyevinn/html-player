@@ -2,7 +2,7 @@ sudo: required
 dist: trusty
 language: node_js
 node_js:
-  - '6'
+  - '8'
 script: npm run build
 before_deploy: rm -rf node_modules
 deploy:
