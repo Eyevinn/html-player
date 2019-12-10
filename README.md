@@ -17,7 +17,7 @@ To be able to quickly add Eyevinn HTML Player to your project we are hosting the
 Copy-paste the stylesheet `<link>` into your `<head>` to load the CSS for the player.
 
 ```
-<link rel="stylesheet" href="https://player.eyevinn.technology/v0.2.4/build/eyevinn-html-player.css">
+<link rel="stylesheet" href="https://player.eyevinn.technology/v0.3.1/build/eyevinn-html-player.css">
 ```
 
 ## JS
@@ -25,7 +25,7 @@ Copy-paste the stylesheet `<link>` into your `<head>` to load the CSS for the pl
 Place the following `<script>` near the end of your pages right before the closing `</body>` tag.
 
 ```
-<script src="https://player.eyevinn.technology/v0.2.4/build/eyevinn-html-player.js" type="text/javascript"></script>
+<script src="https://player.eyevinn.technology/v0.3.1/build/eyevinn-html-player.js" type="text/javascript"></script>
 ```
 
 ## Template
@@ -35,14 +35,14 @@ The snippet below shows an example on how to implement the player:
 ```
   <head>
     <!-- Eyevinn HTML Player CSS -->
-    <link rel="stylesheet" href="https://player.eyevinn.technology/v0.2.4/build/eyevinn-html-player.css"></link>
+    <link rel="stylesheet" href="https://player.eyevinn.technology/v0.3.1/build/eyevinn-html-player.css"></link>
   </head>
   <body>
     <!-- The element where the player will be placed -->
     <div id="player-wrapper"></div>
 
     <!-- Eyevinn HTML Player Javascript -->
-    <script src="https://player.eyevinn.technology/v0.2.4/build/eyevinn-html-player.js" type="text/javascript"></script>
+    <script src="https://player.eyevinn.technology/v0.3.1/build/eyevinn-html-player.js" type="text/javascript"></script>
 
     <!-- Initiate the player and auto-play with audio muted -->
     <script>
