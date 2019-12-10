@@ -1,6 +1,6 @@
 {
   "name": "eyevinn-html-player",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "Eyevinn HTML5 Player with support for HLS, MPEG-DASH and MSS",
   "main": "index.js",
   "scripts": {
