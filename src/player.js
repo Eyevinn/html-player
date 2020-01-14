@@ -11,21 +11,11 @@ export class Player {
     );
   }
 
-  init() {
-    return new Promise((resolve, reject) => {
-      this.playerTechFactory_
-        .constructPlayerTech()
-        .then(player => {
-          let skin = new PlayerSkin(player);
-          skin
-            .init()
-            .then(() => {
-              player.attachControllerSkin(skin);
-              resolve(player);
-            })
-            .catch(reject);
-        })
-        .catch(reject);
-    });
+  async init() {
+    const player = await this.playerTechFactory_.constructPlayerTech();
+    const skin = new PlayerSkin(player);
+    skin.init();
+    player.attachControllerSkin(skin);
+    return player;
   }
 }

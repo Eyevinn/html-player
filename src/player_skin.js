@@ -4,10 +4,7 @@ export class PlayerSkin {
   }
 
   init() {
-    return new Promise(resolve => {
-      this.setupControllers_(this.playerInterface_.wrapper);
-      resolve();
-    });
+    return this.setupControllers_(this.playerInterface_.wrapper);
   }
 
   showBigPlayButton() {
