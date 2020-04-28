@@ -14,13 +14,15 @@ export class PlayerSkin {
   setupControllers_(wrapperElement) {
     let controllerElement = document.createElement("div");
     controllerElement.className = "player-controller player-controller-hidden";
-    let h = wrapperElement.clientHeight * 0.15;
-    controllerElement.style.setProperty("height", `${h}px`);
-    controllerElement.style.setProperty("transform", `translateY(-${h}px)`);
 
     let logoElement = document.createElement("div");
     logoElement.className = "player-logo";
     controllerElement.appendChild(logoElement);
+
+    if (!this.playerInterface_.isLive) {
+      controllerElement.appendChild(this.setupTimeline_());
+    }
+
     let btnTogglePlay = document.createElement("div");
     btnTogglePlay.className = "player-btn-toggle-play player-btn-play";
     btnTogglePlay.addEventListener("mouseover", event => {
@@ -83,10 +85,6 @@ export class PlayerSkin {
       btnToggleAudio.className = "player-btn-toggle-audio player-btn-audio-on";
     });
 
-    if (!this.playerInterface_.isLive) {
-      controllerElement.appendChild(this.setupTimeline_());
-    }
-
     wrapperElement.appendChild(controllerElement);
 
     wrapperElement.addEventListener("mousemove", () => {
@@ -97,12 +95,6 @@ export class PlayerSkin {
         controllerElement.className =
           "player-controller player-controller-hidden";
       }, 5000);
-    });
-
-    window.addEventListener("resize", () => {
-      let h = wrapperElement.clientHeight * 0.15;
-      controllerElement.style.setProperty("height", `${h}px`);
-      controllerElement.style.setProperty("transform", `translateY(-${h}px)`);
     });
   }
 
