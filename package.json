@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build-js": "parcel build index.js --no-source-maps --out-dir build --out-file eyevinn-html-player.js",
-    "build-css": "parcel build styles/main.scss --no-source-maps --out-dir build --out-file eyevinn-html-player.css",
+    "build-css": "parcel build styles/main.scss --no-source-maps --public-url ./ --out-dir build --out-file eyevinn-html-player.css",
     "build": "npm run build-js && npm run build-css",
     "start": "parcel ./demo/index.html",
     "test": "jest --passWithNoTests",
