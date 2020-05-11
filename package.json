@@ -13,7 +13,8 @@
   },
   "author": "Jonas Birmé <jonas.birme@eyevinn.se>",
   "contributors": [
-    "Erik Hoffman <erik.hoffman@eyevinn.se>"
+    "Erik Hoffman <erik.hoffman@eyevinn.se>",
+    "Benjamin Wallberg <benjamin.wallberg@eyevinn.se>"
   ],
   "license": "Apache-2.0",
   "dependencies": {
