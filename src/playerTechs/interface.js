@@ -107,6 +107,7 @@ export class PlayerTechInterface {
   init_(wrapperId) {
     this.videoElement_ = document.createElement("video");
     this.videoElement_.className = "eyevinn-player";
+    this.videoElement_.setAttribute("playsinline", "playsinline");
     let wrapperElement = document.getElementById(wrapperId);
     wrapperElement.appendChild(this.videoElement_);
     wrapperElement.style.setProperty("position", "relative");
