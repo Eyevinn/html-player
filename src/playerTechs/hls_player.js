@@ -10,7 +10,10 @@ export class HlsPlayer extends PlayerTechInterface {
     return new Promise(resolve => {
       let hls = new Hls();
 
-      if (Hls.isSupported) {
+      if (this.videoElement_.canPlayType("application/vnd.apple.mpegurl")) {
+        this.videoElement_.src = this.manifestUrl_;
+        resolve();
+      } else if (Hls.isSupported) {
         hls.attachMedia(this.videoElement_);
         hls.on(Hls.Events.MEDIA_ATTACHED, () => {
           hls.loadSource(this.manifestUrl_);
@@ -23,11 +26,6 @@ export class HlsPlayer extends PlayerTechInterface {
           resolve();
         });
         this.hls_ = hls;
-      } else if (
-        this.videoElement_.canPlayType("application/vnd.apple.mpegurl")
-      ) {
-        this.videoElement_.src = this.manifestUrl_;
-        resolve();
       }
     });
   }
