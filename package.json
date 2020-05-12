@@ -1,12 +1,15 @@
 {
-  "name": "eyevinn-html-player",
+  "name": "@eyevinn/html-player",
   "version": "0.4.2",
   "description": "Eyevinn HTML5 Player with support for HLS, MPEG-DASH and MSS",
-  "main": "index.js",
+  "main": "./pkg/eyevinn-html-player",
   "scripts": {
     "build-js": "parcel build index.js --no-source-maps --out-dir build --out-file eyevinn-html-player.js",
     "build-css": "parcel build styles/main.scss --no-source-maps --public-url ./ --out-dir build --out-file eyevinn-html-player.css",
     "build": "npm run build-js && npm run build-css",
+    "build-npm-js": "parcel build main.js --no-source-maps --out-dir pkg --out-file eyevinn-html-player.js",
+    "build-npm-css": "parcel build styles/main.scss --no-source-maps --public-url ./ --out-dir pkg --out-file style.css",
+    "build-npm": "npm run build-npm-js && npm run build-npm-css",
     "start": "parcel ./demo/index.html",
     "test": "jest --passWithNoTests",
     "postversion": "git push && git push --tags"

@@ -1,0 +1,10 @@
+.cache
+.github
+build
+dist
+demo
+node_modules
+.not_used_travis-yml
+jest.config.js
+.babelrc
+.eslintc.yml
