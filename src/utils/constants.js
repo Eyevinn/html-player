@@ -13,3 +13,7 @@ export const CONTENT_TYPE_MAP = {
 export const ENUM_TYPE_HLS = "HLS";
 export const ENUM_TYPE_MPEGDASH = "MPD";
 export const ENUM_TYPE_MSS = "MSS";
+
+export const DEFAULT_OPTIONS = {
+  skin: true
+};
