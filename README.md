@@ -10,17 +10,13 @@ The player is built on [Hls.js](https://video-dev.github.io/hls.js/), [Shaka Pla
 
 # Getting Started
 
+The player is available both from CDN as well as from NPM for building into your JavaScript application.
+
+## CDN
+
 To be able to quickly add Eyevinn HTML Player to your project we are hosting the player and delivered through our CDN. Want to use a package manager and host the player on your site head over to the [download section](https://github.com/Eyevinn/html-player/releases).
 
-## CSS
-
-Copy-paste the stylesheet `<link>` into your `<head>` to load the CSS for the player.
-
-```
-<link rel="stylesheet" href="https://player.eyevinn.technology/v0.4.2/build/eyevinn-html-player.css">
-```
-
-## JS
+### JS
 
 Place the following `<script>` near the end of your pages right before the closing `</body>` tag.
 
@@ -28,7 +24,15 @@ Place the following `<script>` near the end of your pages right before the closi
 <script src="https://player.eyevinn.technology/v0.4.2/build/eyevinn-html-player.js" type="text/javascript"></script>
 ```
 
-## Template
+### CSS
+
+Copy-paste the stylesheet `<link>` into your `<head>` to load the CSS for the player.
+
+```
+<link rel="stylesheet" href="https://player.eyevinn.technology/v0.4.2/build/eyevinn-html-player.css">
+```
+
+### Template
 
 The snippet below shows an example on how to implement the player:
 
@@ -56,6 +60,33 @@ The snippet below shows an example on how to implement the player:
   </body>
 ```
 
+## NPM
+
+### JS
+
+Install with `npm install @eyevinn/html-player`;
+
+Include in your project by calling `import { setupEyevinnPlayer } from "@eyevinn/html-player"`.
+
+### CSS
+
+Include in your JavaScript file by calling `import "@eyevinn/html-player/pkg/style.css"`;
+
+### Example
+
+```html
+<div id="videoContainer"></div>
+```
+
+```js
+import { setupEyevinnPlayer } from "@eyevinn/html-player";
+import "@eyevinn/html-player/pkg/style.css";
+
+setupEyevinnPlayer("videoContainer", "source.m3u8").then((player) => {
+  player.play();
+});
+```
+
 ## Contribution
 
 You are welcome to either contribute to this project or spin-off a fork of your own. This code is released under the Apache 2.0 license.
@@ -80,6 +111,6 @@ limitations under the License.
 
 Eyevinn Technology is an independent consultant firm specialized in video and streaming. Independent in a way that we are not commercially tied to any platform or technology vendor.
 
-At Eyevinn, every software developer consultant has a dedicated budget reserved for open source development and contribution to the open source community. This give us room for innovation, team building and personal competence development. And also gives us as a company a way to contribute back to the open source community. 
+At Eyevinn, every software developer consultant has a dedicated budget reserved for open source development and contribution to the open source community. This give us room for innovation, team building and personal competence development. And also gives us as a company a way to contribute back to the open source community.
 
 Want to know more about Eyevinn and how it is to work here. Contact us at work@eyevinn.se!
