@@ -36,7 +36,7 @@ Copy-paste the stylesheet `<link>` into your `<head>` to load the CSS for the pl
 
 The snippet below shows an example on how to implement the player:
 
-```
+```html
   <head>
     <!-- Eyevinn HTML Player CSS -->
     <link rel="stylesheet" href="https://player.eyevinn.technology/v0.4.2/build/eyevinn-html-player.css"></link>
@@ -75,15 +75,25 @@ Include in your JavaScript file by calling `import "@eyevinn/html-player/pkg/sty
 ### Example
 
 ```html
-<div id="videoContainer"></div>
+  <head>
+  </head>
+  <body>
+    <!-- The element where the player will be placed -->
+    <div id="player-wrapper"></div>
+
+    <!-- Your built JavaScript file -->
+    <script src="main.js" type="text/javascript"></script>
+  </body>
 ```
 
 ```js
 import { setupEyevinnPlayer } from "@eyevinn/html-player";
 import "@eyevinn/html-player/pkg/style.css";
 
-setupEyevinnPlayer("videoContainer", "source.m3u8").then((player) => {
-  player.play();
+document.addEventListener('DOMContentLoaded', function(event) {
+  setupEyevinnPlayer("videoContainer", "source.m3u8").then((player) => {
+    player.play();
+  });
 });
 ```
 
