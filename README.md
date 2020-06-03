@@ -92,9 +92,16 @@ import "@eyevinn/html-player/pkg/style.css";
 
 document.addEventListener('DOMContentLoaded', function(event) {
   setupEyevinnPlayer("videoContainer", "source.m3u8").then((player) => {
+    window.myPlayerInstance = player;
     player.play();
   });
 });
+```
+
+To kill it later on
+
+```js
+window.myPlayerInstance.destroy();
 ```
 
 ## Contribution
