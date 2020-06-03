@@ -27,4 +27,11 @@ export class MssPlayer extends PlayerTechInterface {
   get isLive() {
     return this.mediaPlayer_.isDynamic();
   }
+
+  destroy() {
+    if (this.mediaPlayer_) {
+      this.mediaPlayer_.reset();
+    }
+    super.destroy();
+  }
 }

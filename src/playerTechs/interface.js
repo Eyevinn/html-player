@@ -133,4 +133,9 @@ export class PlayerTechInterface {
 
     return wrapperElement;
   }
+
+  destroy() {
+    console.log("Player destroyed");
+    this.videoElement_.remove();
+  }
 }

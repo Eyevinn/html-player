@@ -37,4 +37,11 @@ export class HlsPlayer extends PlayerTechInterface {
       return isNaN(this.videoElement_.duration);
     }
   }
+
+  destroy() {
+    if (this.hls_) {
+      this.hls_.destroy();
+    }
+    super.destroy();
+  }
 }

@@ -19,4 +19,11 @@ export class DashPlayer extends PlayerTechInterface {
   get isLive() {
     return this.shakap_.isLive();
   }
+
+  destroy() {
+    if (this.shakap_) {
+      this.shakap_.destroy();
+    }
+    super.destroy();
+  }
 }
