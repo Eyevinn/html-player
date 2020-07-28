@@ -1,6 +1,6 @@
 {
   "name": "@eyevinn/html-player",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Eyevinn HTML5 Player with support for HLS, MPEG-DASH and MSS",
   "main": "./pkg/eyevinn-html-player",
   "scripts": {
